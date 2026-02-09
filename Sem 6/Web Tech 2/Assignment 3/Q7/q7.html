@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Promotion Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f1f8e9, #ffffff);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #bb1bb5, #582f8b);
+            color: white;
+            padding: 25px;
+            font-size: large;
+            text-align: center;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #84dee1;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #1e1ec5;
+            transform: scale(1.1);
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Product box layout */
+        .product-box {
+            background-color: white;
+            max-width: 900px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px gray;
+            display: flex;              /* KEY CHANGE */
+            gap: 30px;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .product-box:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Left text section */
+        .product-text {
+            flex: 1;
+        }
+
+        .product-text h2 {
+            text-align: left;
+        }
+
+        .features {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .features li {
+            margin: 10px 0;
+        }
+
+        /* Right image section */
+        .product-image {
+            flex: 1;
+            max-width: 300px;     /* 🔹 controls image size */
+            width: 100%;
+            height: auto;         /* full image, no cropping */
+            border-radius: 20px;
+            box-shadow: 0 4px 10px gray;
+        }
+
+        .product-box button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background-color: #cf1827;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product-box button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4fd96b;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .product-box {
+                flex-direction: column;   /* Stack on mobile */
+                text-align: center;
+            }
+
+            .product-text h2 {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <script>
+        function showMessage() {
+            alert("Thank you for your interest! Product added to cart.");
+        }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <h1>SmartFit Pro Watch</h1>
+    <p>The Ultimate Fitness & Lifestyle Companion</p>
+</header>
+
+<nav>
+    <a href="#">Overview</a>
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="content">
+    <div class="product-box">
+
+        <!-- LEFT: Text -->
+        <div class="product-text">
+            <h2>Why Choose SmartFit Pro?</h2>
+
+            <ul class="features">
+                <li>24/7 Heart Rate & Health Monitoring</li>
+                <li>Built-in GPS with Route Tracking</li>
+                <li>Water Resistant up to 50 meters</li>
+                <li>7-Day Long Battery Life</li>
+                <li>Instant Notifications & Calls</li>
+                <li>Lightweight and Stylish Design</li>
+            </ul>
+
+            <button onclick="showMessage()">Buy Now</button>
+        </div>
+
+        <!-- RIGHT: Image -->
+        <img src="q7.jpg"
+             alt="SmartFit Pro Watch"
+             class="product-image">
+
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 SmartFit Technologies. All Rights Reserved.
+</footer>
+
+</body>
+</html>
