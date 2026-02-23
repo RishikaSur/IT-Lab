@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Live Search</h2>
+<input type="text" id="search" onkeyup="filterItems()" placeholder="Search...">
+
+<ul id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Mango</li>
+    <li>Orange</li>
+    <li>Grapes</li>
+    <li>Pineapple</li>
+    <li>Cherry</li>
+    <li>Watermelon</li>
+    <li>Peach</li>
+    <li>Guava</li>
+</ul>
+
+<script>
+function filterItems() {
+    const input = document.getElementById("search").value.toLowerCase();
+    const items = document.querySelectorAll("#itemList li");
+
+    items.forEach(item => {
+        if (item.textContent.toLowerCase().includes(input)) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

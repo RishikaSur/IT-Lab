@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Registration Form</h2>
+
+<input type="text" id="name" placeholder="Name">
+<p id="nameError"></p>
+
+<input type="text" id="email" placeholder="Email">
+<p id="emailError"></p>
+
+<input type="password" id="password" placeholder="Password">
+<p id="passError"></p>
+
+<input type="password" id="confirm" placeholder="Confirm Password">
+<p id="confirmError"></p>
+
+<button onclick="validate()">Submit</button>
+
+<script>
+function validate() {
+    let valid = true;
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    const passRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+    if (name === "") {
+        document.getElementById("nameError").textContent = "Name required";
+        valid = false;
+    } else document.getElementById("nameError").textContent = "";
+
+    if (!emailRegex.test(email)) {
+        document.getElementById("emailError").textContent = "Invalid email";
+        valid = false;
+    } else document.getElementById("emailError").textContent = "";
+
+    if (!passRegex.test(password)) {
+        document.getElementById("passError").textContent = "Weak password";
+        valid = false;
+    } else document.getElementById("passError").textContent = "";
+
+    if (password !== confirm) {
+        document.getElementById("confirmError").textContent = "Passwords do not match";
+        valid = false;
+    } else document.getElementById("confirmError").textContent = "";
+
+    if (valid) alert("Form Submitted!");
+}
+</script>
+
+</body>
+</html>

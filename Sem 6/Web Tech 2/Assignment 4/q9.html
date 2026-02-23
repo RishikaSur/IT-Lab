@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Quiz App</h2>
+
+<div id="quizBox">
+    <h3 id="question"></h3>
+    <div id="options"></div>
+    <button onclick="nextQuestion()">Next</button>
+</div>
+
+<h3 id="score"></h3>
+
+<script>
+const quizData = [
+    {
+        question: "Which language runs in the browser?",
+        options: ["Python", "Java", "C++", "JavaScript"],
+        answer: "JavaScript"
+    },
+    {
+        question: "What does DOM stand for?",
+        options: ["Document Object Model", "Data Object Method", "Digital Ordinance Model", "Desktop Object Management"],
+        answer: "Document Object Model"
+    },
+    {
+        question: "Which company developed JavaScript?",
+        options: ["Microsoft", "Netscape", "Google", "Oracle"],
+        answer: "Netscape"
+    }
+];
+
+let current = 0;
+let score = 0;
+let selected = "";
+
+function loadQuestion() {
+    const q = quizData[current];
+    document.getElementById("question").innerText = q.question;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.onclick = function() {
+            selected = option;
+        };
+        optionsDiv.appendChild(btn);
+        optionsDiv.appendChild(document.createElement("br"));
+    });
+}
+
+function nextQuestion() {
+    if (selected === quizData[current].answer) {
+        score++;
+    }
+
+    selected = "";
+    current++;
+
+    if (current < quizData.length) {
+        loadQuestion();
+    } else {
+        document.getElementById("quizBox").style.display = "none";
+        document.getElementById("score").innerText = "Final Score: " + score;
+    }
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>

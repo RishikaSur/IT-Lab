@@ -1,0 +1,51 @@
+  <!DOCTYPE html>
+<html>
+<body>
+
+<h2>Calculator</h2>
+<input type="number" id="num1">
+<input type="number" id="num2">
+<select id="operator">
+    <option>+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>/</option>
+</select>
+<button onclick="calculate()">Calculate</button>
+
+<h3>Result: <span id="result"></span></h3>
+<h4>History (Last 5)</h4>
+<ul id="history"></ul>
+
+<script>
+let historyArr = [];
+
+function calculate() {
+    const n1 = parseFloat(document.getElementById("num1").value);
+    const n2 = parseFloat(document.getElementById("num2").value);
+    const op = document.getElementById("operator").value;
+    let result;
+
+    if (op === "+") result = n1 + n2;
+    if (op === "-") result = n1 - n2;
+    if (op === "*") result = n1 * n2;
+    if (op === "/") result = n1 / n2;
+
+    document.getElementById("result").textContent = result;
+
+    const record = `${n1} ${op} ${n2} = ${result}`;
+    historyArr.unshift(record);
+    if (historyArr.length > 5) historyArr.pop();
+
+    const historyList = document.getElementById("history");
+    historyList.innerHTML = "";
+    historyArr.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        historyList.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>

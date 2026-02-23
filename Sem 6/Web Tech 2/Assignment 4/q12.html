@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Character Limit Checker</h2>
+
+<textarea id="text" maxlength="200" rows="5" cols="40"></textarea>
+<p>Remaining characters: <span id="count">200</span></p>
+
+<script>
+const textarea = document.getElementById("text");
+const counter = document.getElementById("count");
+const max = 200;
+
+textarea.addEventListener("input", function() {
+    const remaining = max - textarea.value.length;
+    counter.innerText = remaining;
+
+    if (remaining <= 0) {
+        textarea.value = textarea.value.substring(0, max);
+    }
+});
+</script>
+
+</body>
+</html>

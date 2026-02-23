@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Student Table</h2>
+
+<input type="text" id="search" placeholder="Search..." onkeyup="filterTable()">
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+let students = [];
+
+fetch("q10.json")
+    .then(response => response.json())
+    .then(data => {
+        students = data;
+        displayTable(students);
+    });
+
+function displayTable(data) {
+    const body = document.getElementById("tableBody");
+    body.innerHTML = "";
+
+    data.forEach(student => {
+        const row = `<tr>
+                        <td>${student.name}</td>
+                        <td>${student.age}</td>
+                        <td>${student.course}</td>
+                     </tr>`;
+        body.innerHTML += row;
+    });
+}
+
+function filterTable() {
+    const value = document.getElementById("search").value.toLowerCase();
+    const filtered = students.filter(s =>
+        s.name.toLowerCase().includes(value) ||
+        s.course.toLowerCase().includes(value)
+    );
+    displayTable(filtered);
+}
+</script>
+
+</body>
+</html>

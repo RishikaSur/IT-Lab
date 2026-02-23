@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Enter username">
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+
+<h3 id="welcome"></h3>
+
+<script>
+function login() {
+    const user = document.getElementById("username").value;
+    localStorage.setItem("user", user);
+    showUser();
+}
+
+function logout() {
+    localStorage.removeItem("user");
+    document.getElementById("welcome").textContent = "";
+}
+
+function showUser() {
+    const user = localStorage.getItem("user");
+    if (user) {
+        document.getElementById("welcome").textContent = "Welcome back, " + user;
+    }
+}
+
+showUser();
+</script>
+
+</body>
+</html>
